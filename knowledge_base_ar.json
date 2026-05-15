@@ -1,0 +1,201 @@
+{
+  "start_question": {
+    "id": "q_start",
+    "question": "منطقة T هي المنطقة التي تشمل الجبهة والأنف والذقن\n كيف تبدو بشرتك بعد 30 دقيقة من غسل الوجه؟",
+    "options": {
+      "وجه لامع بالكامل": {"score": {"oily": 0.9, "dry": -0.7, "normal": -0.6, "combination": -0.4}, "next": "oily_branch"},
+      "شد / تقشر": {"score": {"dry": 0.9, "oily": -0.8, "normal": -0.6, "combination": -0.5}, "next": "dry_branch"},
+      "لمعان في منطقة T": {"score": {"combination": 0.9, "oily": -0.5, "dry": -0.6, "normal": -0.4}, "next": "combination_branch"},
+      "راحة / توازن": {"score": {"normal": 0.9, "oily": -0.6, "dry": -0.6, "combination": -0.4}, "next": "normal_branch"}
+    }
+  },
+
+  "dry_branch": {
+    "id": "q_dry_1",
+    "question": "هل تشعر بشرتك بخشونة أو تقشر خلال اليوم؟",
+    "options": {
+      "لا": {"score": {"normal": 0.6, "dry": -0.4}, "next": "normal_branch"},
+      "نعم": {"score": {"dry": 0.75, "oily": -0.4}, "next": "q_dry_2"}
+    }
+  },
+
+  "q_dry_2": {
+    "id": "q_dry_2",
+    "question": "كيف تتصرف بشرتك في بيئة جافة بدون مرطب؟",
+    "options": {
+      "تصبح لامعة": {"score": {"oily": 0.75, "dry": -0.5}, "next": "oily_branch"},
+      "تشعر بالشد فقط": {"score": {"dry": 0.85, "normal": -0.4}, "next": "q_dry_3"},
+      "جافة جدًا / متشققة": {"score": {"dry": 0.9, "oily": -0.8, "normal": -0.6, "combination": -0.5}, "next": "dry_skin"},
+      "تبدو طبيعية": {"score": {"normal": 0.65, "dry": -0.5}, "next": "normal_branch"}
+    }
+  },
+
+  "q_dry_3": {
+    "id": "q_dry_3",
+    "question": "هل المسام غير واضحة تقريبًا؟",
+    "options": {
+      "نعم": {"score": {"dry": 0.85, "oily": -0.5}, "next": "dry_skin"},
+      "لا": {"score": {"combination": 0.7, "dry": -0.5}, "next": "combination_branch"}
+    }
+  },
+
+  "oily_branch": {
+    "id": "q_oily_1",
+    "question": "هل يظهر اللمعان بعد 2–3 ساعات من غسل الوجه؟",
+    "options": {
+      "لا": {"score": {"combination": 0.7, "oily": -0.6}, "next": "combination_branch"},
+      "نعم": {"score": {"oily": 0.8, "combination": -0.5}, "next": "q_oily_2"}
+    }
+  },
+
+  "q_oily_2": {
+    "id": "q_oily_2",
+    "question": "كم مرة تظهر الحبوب أو الرؤوس البيضاء؟",
+    "options": {
+      "نادرًا": {"score": {"combination": 0.6, "oily": -0.4}, "next": "combination_branch"},
+      "كثيرًا": {"score": {"oily": 0.8, "normal": -0.5}, "next": "q_oily_3"}
+    }
+  },
+
+  "q_oily_3": {
+    "id": "q_oily_3",
+    "question": "ما حجم المسام؟",
+    "options": {
+      "متوسطة": {"score": {"combination": 0.6, "oily": -0.4}, "next": "combination_branch"},
+      "كبيرة": {"score": {"oily": 0.9, "combination": -0.6}, "next": "oily_skin"}
+    }
+  },
+
+  "normal_branch": {
+    "id": "q_normal_1",
+    "question": "هل تصبح بشرتك لامعة خلال اليوم؟",
+    "options": {
+      "غالبًا": {"score": {"oily": 0.75, "normal": -0.6}, "next": "oily_branch"},
+      "أحيانًا": {"score": {"combination": 0.7, "normal": -0.5}, "next": "combination_branch"},
+      "لا": {"score": {"normal": 0.7, "oily": -0.5}, "next": "q_normal_2"}
+    }
+  },
+
+  "q_normal_2": {
+    "id": "q_normal_2",
+    "question": "كيف يظهر وجهك في الصور؟",
+    "options": {
+      "لامع غالبًا": {"score": {"oily": 0.7, "normal": -0.6}, "next": "oily_branch"},
+      "أحيانًا لامع": {"score": {"combination": 0.6, "normal": -0.5}, "next": "combination_branch"},
+      "غير لامع": {"score": {"normal": 0.7, "oily": -0.5}, "next": "q_normal_3"}
+    }
+  },
+
+  "q_normal_3": {
+    "id": "q_normal_3",
+    "question": "كم عدد المسام الكبيرة الظاهرة؟",
+    "options": {
+      "كثير": {"score": {"oily": 0.7, "normal": -0.6}, "next": "oily_branch"},
+      "قليل في منطقة T": {"score": {"combination": 0.6, "normal": -0.5}, "next": "combination_branch"},
+      "لا يوجد": {"score": {"normal": 0.9, "oily": -0.6}, "next": "normal_skin"}
+    }
+  },
+
+  "combination_branch": {
+    "id": "q_comb_1",
+    "question": "أين يظهر اللمعان؟",
+    "options": {
+      "كل الوجه": {"score": {"oily": 0.8, "combination": -0.6}, "next": "oily_branch"},
+      "لا يوجد لمعان": {"score": {"normal": 0.7, "combination": -0.5}, "next": "normal_branch"},
+      "منطقة T فقط": {"score": {"combination": 0.85, "oily": -0.5, "dry": -0.5}, "next": "q_comb_2"}
+    }
+  },
+
+  "q_comb_2": {
+    "id": "q_comb_2",
+    "question": "كيف تبدو الخدود؟",
+    "options": {
+      "دهنية": {"score": {"oily": 0.7}, "next": "oily_branch"},
+      "جافة": {"score": {"combination": 0.7}, "next": "q_comb_3"},
+      "طبيعية": {"score": {"combination": 0.8}, "next": "q_comb_4"}
+    }
+  },
+
+  "q_comb_3": {
+    "id": "q_comb_3",
+    "question": "هل تتقشر الخدود؟",
+    "options": {
+      "نعم": {"score": {"dry": 0.7}, "next": "dry_branch"},
+      "لا": {"score": {"combination": 0.8}, "next": "combination_skin"}
+    }
+  },
+
+  "q_comb_4": {
+    "id": "q_comb_4",
+    "question": "كم عدد المسام الظاهرة في منطقة T؟",
+    "options": {
+      "كثير": {"score": {"oily": 0.7}, "next": "oily_branch"},
+      "قليل": {"score": {"combination": 0.9}, "next": "combination_skin"}
+    }
+  },
+
+  "tie_breaker": {
+    "id": "tie_1",
+    "question": "كيف تشعر بشرتك بعد دقائق من غسلها بماء دافئ؟",
+    "options": {
+      "لامعة في منطقة T": {"score": {"combination": 0.5}, "next": "tie_makeup"},
+      "لامعة بالكامل": {"score": {"oily": 0.5}, "next": "tie_makeup"},
+      "طبيعية": {"score": {"normal": 0.5}, "next": "tie_makeup"},
+      "مشدودة": {"score": {"dry": 0.5}, "next": "tie_makeup"}
+    }
+  },
+
+  "tie_makeup": {
+    "id": "tie_2",
+    "question": "كيف يبدو المكياج بعد عدة ساعات؟",
+    "options": {
+      "يذوب في T-zone": {"score": {"combination": 0.5}, "next": "tie_exercise"},
+      "لامع / يذوب": {"score": {"oily": 0.5}, "next": "tie_exercise"},
+      "طبيعي": {"score": {"normal": 0.5}, "next": "tie_exercise"},
+      "متقشر": {"score": {"dry": 0.5}, "next": "tie_exercise"}
+    }
+  },
+
+  "tie_exercise": {
+    "id": "tie_3",
+    "question": "كيف تتصرف بشرتك بعد التمرين؟",
+    "options": {
+      "لامعة في T-zone": {"score": {"combination": 0.5}, "next": "tie_morning"},
+      "لامعة بالكامل": {"score": {"oily": 0.5}, "next": "tie_morning"},
+      "طبيعية": {"score": {"normal": 0.5}, "next": "tie_morning"},
+      "مشدودة": {"score": {"dry": 0.5}, "next": "tie_morning"}
+    }
+  },
+
+  "tie_morning": {
+    "id": "tie_4",
+    "question": "كيف تبدو بشرتك عند الاستيقاظ؟",
+    "options": {
+      "لامعة في T-zone": {"score": {"combination": 0.5}, "next": "tie_weather"},
+      "لامعة بالكامل": {"score": {"oily": 0.5}, "next": "tie_weather"},
+      "طبيعية": {"score": {"normal": 0.5}, "next": "tie_weather"},
+      "مشدودة": {"score": {"dry": 0.5}, "next": "tie_weather"}
+    }
+  },
+
+  "tie_weather": {
+    "id": "tie_5",
+    "question": "كيف تتفاعل بشرتك مع الهواء البارد أو الرطب؟",
+    "options": {
+      "لامعة في T-zone": {"score": {"combination": 0.5}, "next": "end"},
+      "لامعة بالكامل": {"score": {"oily": 0.5}, "next": "end"},
+      "طبيعية": {"score": {"normal": 0.5}, "next": "end"},
+      "مشدودة": {"score": {"dry": 0.5}, "next": "end"}
+    }
+  }  ,
+"descriptions": {
+  "oily":  "بشرتك دهنية، مع قابلية لزيادة الإفرازات الدهنية وظهور اللمعان. تم الوصول إلى هذا التشخيص بناءً على إجاباتك التي أظهرت نشاطًا زائدًا في إنتاج الزيوت على سطح البشرة.",
+  
+  "dry":  "بشرتك جافة، مع قابلية للشعور بالشد أو التقشر. تم الوصول إلى هذا التشخيص بناءً على إجاباتك التي أظهرت نقصًا في الترطيب الطبيعي للبشرة.",
+
+  "combination":  "بشرتك مختلطة، مع قابلية لظهور بعض المشكلات الخفيفة. تم الوصول إلى هذا التشخيص بناءً على إجاباتك التي أظهرت وجود توازن بين مناطق دهنية وأخرى طبيعية أو جافة.",
+
+  "normal": "بشرتك عادية، وتتميز بتوازن عام دون مؤشرات واضحة لمشكلات دهنية أو جفاف. تم الوصول إلى هذا التشخيص بناءً على إجاباتك التي أظهرت استقرارًا في خصائص البشرة."
+
+}
+}

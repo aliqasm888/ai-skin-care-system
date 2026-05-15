@@ -1,0 +1,201 @@
+{
+  "start_question": {
+    "id": "q_start",
+    "question": "The T-zone refers to the area that includes the forehead, nose, and chin\n How does your skin look 30 minutes after washing?",
+    "options": {
+      "Shiny full face": {"score": {"oily": 0.9, "dry": -0.7, "normal": -0.6, "combination": -0.4}, "next": "oily_branch"},
+      "Tight / Flaky": {"score": {"dry": 0.9, "oily": -0.8, "normal": -0.6, "combination": -0.5}, "next": "dry_branch"},
+      "Shiny T-zone": {"score": {"combination": 0.9, "oily": -0.5, "dry": -0.6, "normal": -0.4}, "next": "combination_branch"},
+      "Comfortable / Balanced": {"score": {"normal": 0.9, "oily": -0.6, "dry": -0.6, "combination": -0.4}, "next": "normal_branch"}
+    }
+  },
+
+  "dry_branch": {
+    "id": "q_dry_1",
+    "question": "Does your skin feel flaky or rough during the day?",
+    "options": {
+      "No": {"score": {"normal": 0.6, "dry": -0.4}, "next": "normal_branch"},
+      "Yes": {"score": {"dry": 0.75, "oily": -0.4}, "next": "q_dry_2"}
+    }
+  },
+
+  "q_dry_2": {
+    "id": "q_dry_2",
+    "question": "How does your skin behave in a dry environment without moisturizer?",
+    "options": {
+      "Becomes shiny": {"score": {"oily": 0.75, "dry": -0.5}, "next": "oily_branch"},
+      "Feels tight only": {"score": {"dry": 0.85, "normal": -0.4}, "next": "q_dry_3"},
+      "Very dry / cracked": {"score": {"dry": 0.9, "oily": -0.8, "normal": -0.6, "combination": -0.5}, "next": "dry_skin"},
+      "Feels normal": {"score": {"normal": 0.65, "dry": -0.5}, "next": "normal_branch"}
+    }
+  },
+
+  "q_dry_3": {
+    "id": "q_dry_3",
+    "question": "Are the pores barely visible?",
+    "options": {
+      "Yes": {"score": {"dry": 0.85, "oily": -0.5}, "next": "dry_skin"},
+      "No": {"score": {"combination": 0.7, "dry": -0.5}, "next": "combination_branch"}
+    }
+  },
+
+  "oily_branch": {
+    "id": "q_oily_1",
+    "question": "Does shine appear 2–3 hours after washing?",
+    "options": {
+      "No": {"score": {"combination": 0.7, "oily": -0.6}, "next": "combination_branch"},
+      "Yes": {"score": {"oily": 0.8, "combination": -0.5}, "next": "q_oily_2"}
+    }
+  },
+
+  "q_oily_2": {
+    "id": "q_oily_2",
+    "question": "How often do pimples or whiteheads appear?",
+    "options": {
+      "Rarely": {"score": {"combination": 0.6, "oily": -0.4}, "next": "combination_branch"},
+      "Often": {"score": {"oily": 0.8, "normal": -0.5}, "next": "q_oily_3"}
+    }
+  },
+
+  "q_oily_3": {
+    "id": "q_oily_3",
+    "question": "What is the pore size?",
+    "options": {
+      "Medium": {"score": {"combination": 0.6, "oily": -0.4}, "next": "combination_branch"},
+      "Large": {"score": {"oily": 0.9, "combination": -0.6}, "next": "oily_skin"}
+    }
+  },
+
+  "normal_branch": {
+    "id": "q_normal_1",
+    "question": "Does your skin become shiny during the day?",
+    "options": {
+      "Often": {"score": {"oily": 0.75, "normal": -0.6}, "next": "oily_branch"},
+      "Sometimes": {"score": {"combination": 0.7, "normal": -0.5}, "next": "combination_branch"},
+      "No": {"score": {"normal": 0.7, "oily": -0.5}, "next": "q_normal_2"}
+    }
+  },
+
+  "q_normal_2": {
+    "id": "q_normal_2",
+    "question": "How does your face appear in photos?",
+    "options": {
+      "Often shiny": {"score": {"oily": 0.7, "normal": -0.6}, "next": "oily_branch"},
+      "Sometimes shiny": {"score": {"combination": 0.6, "normal": -0.5}, "next": "combination_branch"},
+      "Not shiny": {"score": {"normal": 0.7, "oily": -0.5}, "next": "q_normal_3"}
+    }
+  },
+
+  "q_normal_3": {
+    "id": "q_normal_3",
+    "question": "How many large pores are visible?",
+    "options": {
+      "Many": {"score": {"oily": 0.7, "normal": -0.6}, "next": "oily_branch"},
+      "A few in T-zone": {"score": {"combination": 0.6, "normal": -0.5}, "next": "combination_branch"},
+      "None": {"score": {"normal": 0.9, "oily": -0.6}, "next": "normal_skin"}
+    }
+  },
+
+  "combination_branch": {
+    "id": "q_comb_1",
+    "question": "Where does the shine appear?",
+    "options": {
+      "Whole face": {"score": {"oily": 0.8, "combination": -0.6}, "next": "oily_branch"},
+      "No shine": {"score": {"normal": 0.7, "combination": -0.5}, "next": "normal_branch"},
+      "T-zone only": {"score": {"combination": 0.85, "oily": -0.5, "dry": -0.5}, "next": "q_comb_2"}
+    }
+  },
+    "q_comb_2": {
+    "id": "q_comb_2",
+    "question": "How do your cheeks look?",
+    "options": {
+      "Oily": {"score": {"oily": 0.7}, "next": "oily_branch"},
+      "Dry": {"score": {"combination": 0.7}, "next": "q_comb_3"},
+      "Normal": {"score": {"combination": 0.8}, "next": "q_comb_4"}
+    }
+  },
+  "q_comb_3": {
+    "id": "q_comb_3",
+    "question": "Do your cheeks become flaky?",
+    "options": {
+      "Yes": {"score": {"dry": 0.7}, "next": "dry_branch"},
+      "No": {"score": {"combination": 0.8}, "next": "combination_skin"}
+    }
+  },
+  "q_comb_4": {
+    "id": "q_comb_4",
+    "question": "How many visible pores are in the T-zone?",
+    "options": {
+      "Many": {"score": {"oily": 0.7}, "next": "oily_branch"},
+      "A few": {"score": {"combination": 0.9}, "next": "combination_skin"}
+    }
+  },
+
+  "tie_breaker": {
+    "id": "tie_1",
+    "question": "How does your skin feel a few minutes after washing with warm water?",
+    "options": {
+      "Shiny in the T-zone": {"score": {"combination": 0.5}, "next": "tie_makeup"},
+      "Shiny all over": {"score": {"oily": 0.5}, "next": "tie_makeup"},
+      "Looks normal": {"score": {"normal": 0.5}, "next": "tie_makeup"},
+      "Feels tight": {"score": {"dry": 0.5}, "next": "tie_makeup"}
+    }
+  },
+
+  "tie_makeup": {
+    "id": "tie_2",
+    "question": "How does your makeup look after several hours?",
+    "options": {
+      "Melts in the T-zone": {"score": {"combination": 0.5}, "next": "tie_exercise"},
+      "Shiny / Melting": {"score": {"oily": 0.5}, "next": "tie_exercise"},
+      "Natural": {"score": {"normal": 0.5}, "next": "tie_exercise"},
+      "Flaky": {"score": {"dry": 0.5}, "next": "tie_exercise"}
+    }
+  },
+
+  "tie_exercise": {
+    "id": "tie_3",
+    "question": "How does your skin behave after exercise?",
+    "options": {
+      "Shiny in the T-zone": {"score": {"combination": 0.5}, "next": "tie_morning"},
+      "Shiny all over": {"score": {"oily": 0.5}, "next": "tie_morning"},
+      "Looks normal": {"score": {"normal": 0.5}, "next": "tie_morning"},
+      "Feels tight": {"score": {"dry": 0.5}, "next": "tie_morning"}
+    }
+  },
+
+  "tie_morning": {
+    "id": "tie_4",
+    "question": "How does your skin look when you wake up in the morning?",
+    "options": {
+      "Shiny in the T-zone": {"score": {"combination": 0.5}, "next": "tie_weather"},
+      "Shiny all over": {"score": {"oily": 0.5}, "next": "tie_weather"},
+      "Looks normal": {"score": {"normal": 0.5}, "next": "tie_weather"},
+      "Feels tight": {"score": {"dry": 0.5}, "next": "tie_weather"}
+    }
+  },
+
+  "tie_weather": {
+    "id": "tie_5",
+    "question": "How does your skin react when exposed to cold or humid air?",
+    "options": {
+      "Shiny in the T-zone": {"score": {"combination": 0.5}, "next": "end"},
+      "Shiny all over": {"score": {"oily": 0.5}, "next": "end"},
+      "Looks normal": {"score": {"normal": 0.5}, "next": "end"},
+      "Feels tight": {"score": {"dry": 0.5}, "next": "end"}
+    }
+  }
+,
+"descriptions": {
+  "oily": "Your skin is oily, with a tendency for increased sebum production and noticeable shine. This diagnosis is based on your answers, which indicate heightened oil activity on the skin surface.",
+
+  "dry": "Your skin is dry, with a tendency toward tightness or flakiness. This diagnosis is based on your answers, which indicate a lack of natural skin moisture.",
+
+  "combination": "Your skin is combination, with a tendency to show mild issues in different areas. This diagnosis is based on your answers, which indicate a balance between oily and dry or normal zones.",
+
+  "normal": "Your skin is normal, characterized by overall balance without clear signs of oiliness or dryness. This diagnosis is based on your answers, which indicate stable skin characteristics."
+}
+
+}
+
+
